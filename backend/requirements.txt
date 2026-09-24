@@ -1,0 +1,17 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+sqlalchemy==2.0.35
+pydantic==2.9.2
+pydantic-settings==2.5.2
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+python-multipart==0.0.9
+PyMuPDF==1.24.10
+python-docx==1.1.2
+spacy==3.7.5
+python-dotenv==1.0.1
+
+# spaCy language model (installed from GitHub, it is not on PyPI).
+# Version 3.7.1 is the release that matches spacy==3.7.5 above.
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
