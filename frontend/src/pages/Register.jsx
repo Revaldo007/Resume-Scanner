@@ -17,7 +17,6 @@ export default function Register() {
   const { register } = useAuth();
   const navigate = useNavigate();
 
-  // Mirrors the rules enforced by the backend so users get instant feedback
   const validate = () => {
     const name = username.trim();
     if (!name) return "Username is required.";
@@ -54,24 +53,25 @@ export default function Register() {
   };
 
   const inputClass =
-    "w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500";
+    "w-full bg-[#0d1627] border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/30 transition";
 
   return (
     <AuthCard
-      title="Create your account"
-      subtitle="Register to start screening resumes"
       footer={
         <>
           Already have an account?{" "}
-          <Link to="/login" className="text-indigo-600 hover:text-indigo-700 font-medium">
-            Login
+          <Link
+            to="/login"
+            className="text-teal-400 hover:text-teal-300 font-medium underline transition-colors"
+          >
+            Log in
           </Link>
         </>
       }
     >
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
         <div>
-          <label htmlFor="reg-username" className="block text-sm font-medium text-slate-700 mb-1">
+          <label htmlFor="reg-username" className="block text-xs font-medium text-slate-300 mb-1.5">
             Username
           </label>
           <input
@@ -86,7 +86,7 @@ export default function Register() {
           />
         </div>
         <div>
-          <label htmlFor="reg-password" className="block text-sm font-medium text-slate-700 mb-1">
+          <label htmlFor="reg-password" className="block text-xs font-medium text-slate-300 mb-1.5">
             Password
           </label>
           <input
@@ -100,7 +100,7 @@ export default function Register() {
           />
         </div>
         <div>
-          <label htmlFor="reg-confirm" className="block text-sm font-medium text-slate-700 mb-1">
+          <label htmlFor="reg-confirm" className="block text-xs font-medium text-slate-300 mb-1.5">
             Confirm password
           </label>
           <input
@@ -114,17 +114,18 @@ export default function Register() {
           />
         </div>
 
-        <label className="flex items-center gap-2 text-xs text-slate-500 cursor-pointer select-none">
+        <label className="flex items-center gap-2 text-xs text-slate-400 cursor-pointer select-none">
           <input
             type="checkbox"
             checked={showPasswords}
             onChange={(e) => setShowPasswords(e.target.checked)}
+            className="rounded border-slate-700 bg-[#0d1627] text-teal-500 focus:ring-0 cursor-pointer"
           />
           Show passwords
         </label>
 
         {error && (
-          <div className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-lg px-3 py-2">
+          <div className="text-sm text-red-300 bg-red-950/60 border border-red-800/60 rounded-xl px-3.5 py-2.5">
             {error}
           </div>
         )}
@@ -132,9 +133,9 @@ export default function Register() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white text-sm font-medium rounded-lg py-2.5 transition-colors"
+          className="w-full bg-gradient-to-r from-cyan-600 via-teal-600 to-emerald-600 hover:from-cyan-500 hover:to-emerald-500 disabled:opacity-60 text-white text-sm font-semibold rounded-xl py-2.5 transition-all shadow-lg shadow-teal-700/30 mt-2 cursor-pointer"
         >
-          {loading ? "Creating account..." : "Register"}
+          {loading ? "Creating account..." : "Sign up"}
         </button>
       </form>
     </AuthCard>
